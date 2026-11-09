@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check index.html exists
+        run: test -f index.html
+
+      - name: Validate HTML
+        run: npx --yes html-validate@9 --config .htmlvalidate.json index.html
+
+      - name: Check RESUME data parses
+        run: |
+          node -e "
+            const html = require('fs').readFileSync('index.html','utf8');
+            const m = html.match(/const RESUME = (\{[\s\S]*?\n\});/);
+            if (!m) throw new Error('RESUME block not found');
+            const R = new Function('return ' + m[1])();
+            for (const k of ['name','role','about','skills','experience','projects','education'])
+              if (!R[k]) throw new Error('RESUME.' + k + ' is missing');
+            console.log('RESUME OK for', R.name);
+          "
