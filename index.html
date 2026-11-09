@@ -218,6 +218,7 @@ const RESUME = {
   location: "Philippines",
   email: "",
   phone: "",
+  linkedin: "https://www.linkedin.com/in/raphael-de-luis-b53a0320b/",
   links: [  
   ],
   resumePdf: "Raphael De Luis-Resume.pdf",
@@ -396,7 +397,8 @@ const RESUME = {
     <div class="edu-text"><h3>${esc(e.title)}</h3><div class="sub">${esc(e.sub)}</div></div></div>`).join("");
 
   $("contactBtns").innerHTML =
-    (R.email ? `<a class="btn primary" href="mailto:${esc(R.email)}">✉️ ${esc(R.email)}</a>` : "") + linkBtns("");
+    (R.email ? `<a class="btn primary" href="mailto:${esc(R.email)}">✉️ ${esc(R.email)}</a>` : "") +
+    (R.linkedin ? `<a class="btn primary" href="${esc(R.linkedin)}" target="_blank" rel="noopener">LinkedIn ↗</a>` : "") + linkBtns("");
 
   $("footer").textContent = `© ${new Date().getFullYear()} ${R.name}`;
 
