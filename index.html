@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -272,12 +272,12 @@ const RESUME = {
 
 <nav>
   <div class="wrap">
-    <a href="#top" class="brand" id="brand"></a>
+    <a href="#top" class="brand" id="brand">Raphael De Luis</a>
     <div class="links">
       <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
       <a href="projects/index.html">Projects</a><a href="#contact">Contact</a>
     </div>
-    <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">◐</button>
+    <button type="button" class="icon-btn" id="themeBtn" aria-label="Toggle theme">◐</button>
   </div>
 </nav>
 
@@ -285,7 +285,7 @@ const RESUME = {
   <header class="hero reveal">
     <div class="hero-text">
       <div class="eyebrow">Hello, I'm</div>
-      <h1 id="name"></h1>
+      <h1 id="name">Raphael De Luis</h1>
       <p class="role" id="role"></p>
       <div class="meta" id="meta"></div>
       <div class="btns" id="heroBtns"></div>
@@ -324,7 +324,7 @@ const RESUME = {
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate preview" hidden>
   <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
-  <img id="lightboxImg" alt="">
+  <img id="lightboxImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
 </div>
 
 <script>
@@ -382,8 +382,8 @@ const RESUME = {
   let theme; try { theme = localStorage.getItem("theme"); } catch {}
   if (!theme) theme = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
   root.dataset.theme = theme;
-  const lb = $("lightbox"), lbImg = $("lightboxImg");
-  const closeLb = () => { lb.hidden = true; lbImg.removeAttribute("src"); document.body.style.overflow = ""; };
+  const lb = $("lightbox"), lbImg = $("lightboxImg"), BLANK = lbImg.src;
+  const closeLb = () => { lb.hidden = true; lbImg.src = BLANK; document.body.style.overflow = ""; };
   $("certList").addEventListener("click", ev => {
     const b = ev.target.closest(".thumb");
     if (!b) return;
