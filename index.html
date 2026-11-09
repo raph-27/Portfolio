@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raphael De Luis — Resume</title>
+<meta name="description" content="Resume and skills of Raphael De Luis, IT Infrastructure &amp; Network Engineer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f7f9; --surface: #ffffff; --text: #14161b; --muted: #5b616d;
+    --line: #e3e5ea; --accent: #0f9d76; --accent-soft: #e0f5ee; --on-accent: #fff;
+    --radius: 14px; --max: 1040px;
+  }
+  [data-theme="dark"] {
+    --bg: #070a10; --surface: #0e131c; --text: #eceef2; --muted: #98a0ae;
+    --line: #1c2430; --accent: #34d3a0; --accent-soft: #10261f; --on-accent: #04130d;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    transition: background .2s, color .2s;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+  nav {
+    position: sticky; top: 14px; z-index: 10;
+    width: calc(100% - 32px); max-width: var(--max); margin: 14px auto 0;
+    background: color-mix(in srgb, var(--surface) 80%, transparent);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--line); border-radius: 999px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.14);
+  }
+  nav .wrap { display: flex; align-items: center; gap: 24px; height: 56px; padding: 0 12px 0 24px; }
+  nav .brand { font-weight: 800; letter-spacing: -.02em; color: var(--text); margin-right: auto; }
+  nav .links { display: flex; gap: 20px; }
+  nav .links a { color: var(--muted); font-size: 14px; font-weight: 500; }
+  nav .links a:hover { color: var(--text); text-decoration: none; }
+  .icon-btn {
+    border: 1px solid var(--line); background: var(--surface); color: var(--text);
+    border-radius: 8px; padding: 6px 10px; cursor: pointer; font: inherit; font-size: 14px;
+  }
+
+  .hero { padding: 88px 0 64px; }
+  .hero .eyebrow { font-family: "JetBrains Mono", monospace; color: var(--accent); font-size: 14px; }
+  .hero h1 { font-size: clamp(40px, 7vw, 68px); line-height: 1.05; letter-spacing: -.035em; margin: 12px 0 16px; }
+  .hero .role { font-size: clamp(18px, 2.4vw, 22px); color: var(--muted); margin: 0 0 28px; max-width: 660px; }
+  .hero .role strong { color: var(--text); }
+  .hero .meta { display: flex; flex-wrap: wrap; gap: 10px 20px; color: var(--muted); font-size: 14px; margin-bottom: 32px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 10px;
+    font: inherit; font-weight: 600; font-size: 15px; border: 1px solid var(--line);
+    color: var(--text); background: var(--surface); cursor: pointer; transition: transform .15s;
+  }
+  .btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  .btn:hover { text-decoration: none; transform: translateY(-1px); }
+
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  .sec-head { display: grid; grid-template-columns: 200px 1fr; gap: 32px; }
+  .sec-head h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); margin: 6px 0 0; }
+  @media (max-width: 760px) {
+    .sec-head { grid-template-columns: 1fr; gap: 16px; }
+    nav .links { display: none; }
+  }
+  .about p { font-size: 18px; margin: 0 0 14px; }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin-top: 24px; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+  .stat b { display: block; font-size: 28px; letter-spacing: -.02em; }
+  .stat span { color: var(--muted); font-size: 14px; }
+
+  .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .card h3 { margin: 0 0 14px; font-size: 16px; }
+  .bar { margin-bottom: 12px; }
+  .bar-label { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 5px; }
+  .bar-label span:last-child { color: var(--muted); }
+  .track { height: 6px; background: var(--accent-soft); border-radius: 99px; overflow: hidden; }
+  .fill { height: 100%; width: 0; background: var(--accent); border-radius: 99px; transition: width 1s cubic-bezier(.2,.7,.2,1); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { background: var(--accent-soft); color: var(--accent); padding: 4px 10px; border-radius: 99px; font-size: 13px; font-weight: 500; }
+
+  .job { position: relative; padding: 0 0 32px 28px; border-left: 2px solid var(--line); }
+  .job:last-child { padding-bottom: 0; }
+  .job::before {
+    content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--bg); border: 2px solid var(--accent);
+  }
+  .job .top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; }
+  .job h3 { margin: 0; font-size: 18px; }
+  .when { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--muted); }
+  .job .org { color: var(--accent); font-weight: 500; margin: 2px 0 10px; }
+  .job ul { margin: 0; padding-left: 18px; color: var(--muted); }
+  .job li { margin-bottom: 4px; }
+
+  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .project { display: flex; flex-direction: column; transition: transform .15s, border-color .15s; }
+  .project:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .project p { color: var(--muted); font-size: 15px; margin: 0 0 16px; flex: 1; }
+  .project .tags { margin-bottom: 14px; }
+
+  .edu { display: grid; gap: 14px; }
+  .edu .card { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; }
+  .edu h3 { margin: 0; }
+  .edu .sub { color: var(--muted); font-size: 15px; }
+
+  .contact-box { background: var(--surface); border: 1px solid var(--accent); border-radius: 20px; padding: 40px; }
+  .contact-box h3 { font-size: 28px; margin: 0 0 8px; letter-spacing: -.02em; }
+  .contact-box p { color: var(--muted); margin: 0 0 24px; }
+
+  footer { padding: 32px 0 48px; color: var(--muted); font-size: 14px; text-align: center; }
+
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s, transform .6s; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .fill { transition: none; } }
+
+  @media print {
+    nav, .btns, #themeBtn, footer { display: none !important; }
+    :root, [data-theme="dark"] { --bg:#fff; --surface:#fff; --text:#000; --muted:#333; --line:#ccc; --accent:#0a6b4f; --accent-soft:#eee; }
+    body { font-size: 12px; }
+    .hero { padding: 0 0 16px; }
+    section { padding: 16px 0; break-inside: avoid; }
+    .reveal { opacity: 1; transform: none; }
+    .contact-box { border: 0; padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+<script>
+/* =========================================================
+   EDIT YOUR RESUME HERE — the whole page is built from this.
+   Placeholder items are marked; replace them with your real details.
+   ========================================================= */
+const RESUME = {
+  name: "Raphael De Luis",
+  role: "IT Infrastructure & Network Engineer",
+  tagline: "Enterprise networking, systems administration, cybersecurity, virtualization and cloud.",
+  location: "Philippines",
+  email: "",
+  phone: "",
+  links: [
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/raphael-de-luis-b53a0320b/" },
+    { label: "Blog", url: "https://raph-27.github.io/Blog/" }
+  ],
+  resumePdf: "",
+
+  about: [
+    "IT Infrastructure and Network Engineer with experience in enterprise networking, systems administration, cybersecurity, virtualization, and cloud technologies.",
+    "I started as an IT support intern, grew into a Jr. Solutions Architect role, and have supported 200+ clients while designing and deploying scalable IT and network solutions. I also run a home lab with Proxmox, NAS, and cloud-integrated enterprise simulations."
+  ],
+  stats: [
+    { value: "200+", label: "Clients supported" },
+    { value: "8",    label: "Certifications" },
+    { value: "2022", label: "In IT since" }
+  ],
+
+  skills: {
+    bars: [],
+    tags: [
+      { group: "Network Infrastructure & Security", items: ["LAN / WAN / WLAN", "Routing & Switching", "VLANs", "DNS / DHCP", "IPsec & Site-to-Site VPN", "Fortinet FortiGate", "Cisco", "UniFi"] },
+      { group: "Server Administration", items: ["Windows Server", "Linux", "Active Directory", "Group Policy", "Microsoft 365", "Exchange Online"] },
+      { group: "Virtualization", items: ["Proxmox VE", "Hyper-V", "Containerization"] },
+      { group: "Cloud & Automation", items: ["AWS", "Terraform", "Hybrid Cloud"] },
+      { group: "Backup & Disaster Recovery", items: ["Synology NAS", "RAID", "Backup Solutions", "Recovery Strategies"] },
+      { group: "Security Monitoring", items: ["Firewall Management", "Vulnerability Assessment", "Wazuh", "Splunk"] },
+      { group: "IT Operations", items: ["L1 / L2 / L3 Support", "AnyDesk", "TeamViewer", "Root Cause Analysis", "SLA Ticket Management"] },
+      { group: "Documentation", items: ["Network Documentation", "Infrastructure Diagrams", "Deployment Plans", "Technical Reports"] },
+      { group: "Currently Pursuing", items: ["AWS Solutions Architect – Associate", "Cisco CCNA", "Terraform Associate (002)", "Azure AZ-900", "GCP Cloud Digital Leader"] }
+    ]
+  },
+
+  experience: [
+    {
+      title: "IT Infrastructure | Network Engineer", company: "Herma Corporation", when: "Aug 2025 — Present",
+      points: [
+        "Resolve escalated L1/L2/L3 IT support tickets within SLA targets.",
+        "Configure and maintain Fortinet FortiGate, Cisco, and UniFi devices, including firewall policy, DNS, DHCP, VLANs, and VPNs.",
+        "Administer Windows Server, Active Directory, Group Policy, DNS, DHCP, Microsoft 365, Exchange Online, and Defender.",
+        "Manage site-to-site and remote access VPNs, firewall policies, NAT rules, and network security.",
+        "Design cost-effective infrastructure solutions and provide on-site technical support."
+      ]
+    },
+    {
+      title: "Jr. Solutions Architect", company: "Trailblazers Solutions Inc.", when: "Oct 2023 — Jul 2024",
+      points: [
+        "Designed and implemented scalable IT, network, IP PBX, and CCTV solutions.",
+        "Assisted with system integrations, technical documentation, and product demonstrations.",
+        "Provided pre-sales and post-sales support through consultations and remote sessions.",
+        "Maintained systems and networks with ongoing technical support."
+      ]
+    },
+    {
+      title: "IT Support Staff (Part-Time)", company: "Trailblazers Solutions Inc.", when: "Jul 2022 — Jul 2024",
+      points: [
+        "Provided Level 1/2 support, monitoring network performance and resolving hardware, software, and connectivity issues within SLA targets.",
+        "Delivered remote support using AnyDesk and TeamViewer.",
+        "Managed backup monitoring and disaster recovery processes."
+      ]
+    }
+  ],
+
+  projects: [
+    { name: "Virtualization Using Proxmox VE", desc: "Home lab virtualization with Proxmox VE.", tags: ["Proxmox", "Virtualization"], url: "https://raph-27.github.io/Blog/" },
+    { name: "Basic Containerization", desc: "Hands-on introduction to running and managing containers.", tags: ["Containers", "Linux"], url: "https://raph-27.github.io/Blog/" },
+    { name: "AWS Projects", desc: "IAM user creation, EC2 provisioning with Terraform, Auto Scaling Group, load balancing across two instances, and migrating EBS to another region.", tags: ["AWS", "Terraform", "IAM", "EBS"], url: "https://raph-27.github.io/Blog/" }
+  ],
+
+  education: [
+    { title: "B.S. in Information Technology", sub: "Quezon City University · Quezon City University Scholarship recipient", when: "2020 — 2024" },
+    { title: "AWS Certified Cloud Practitioner", sub: "Amazon Web Services", when: "Certification" },
+    { title: "Fortinet Cybersecurity Associate", sub: "Fortinet", when: "Certification" },
+    { title: "Fortinet Cybersecurity Associate – FortiGate Operator", sub: "Fortinet", when: "Certification" },
+    { title: "Six Sigma White Belt", sub: "Council for Six Sigma Certification", when: "Certification" },
+    { title: "TP-Link Omada Certified Network Administrator", sub: "TP-Link", when: "Certification" },
+    { title: "TP-Link Enterprise Switching and Routing", sub: "TP-Link", when: "Certification" },
+    { title: "Ruijie Certified Network Associate", sub: "Ruijie", when: "Certification" },
+    { title: "Sangfor Certified Sales Specialist", sub: "Sangfor", when: "Certification" }
+  ]
+};
+</script>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand" id="brand"></a>
+    <div class="links">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
+      <a href="#projects">Projects</a><a href="#contact">Contact</a>
+    </div>
+    <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">◐</button>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+  <header class="hero reveal">
+    <div class="eyebrow">Hello, I'm</div>
+    <h1 id="name"></h1>
+    <p class="role" id="role"></p>
+    <div class="meta" id="meta"></div>
+    <div class="btns" id="heroBtns"></div>
+  </header>
+
+  <section id="about" class="reveal"><div class="sec-head"><h2>About</h2>
+    <div class="about"><div id="aboutText"></div><div class="stats" id="stats"></div></div></div></section>
+
+  <section id="skills" class="reveal"><div class="sec-head"><h2>Skills</h2>
+    <div class="skill-groups" id="skillGroups"></div></div></section>
+
+  <section id="experience" class="reveal"><div class="sec-head"><h2>Experience</h2>
+    <div id="timeline"></div></div></section>
+
+  <section id="projects" class="reveal"><div class="sec-head"><h2>Projects</h2>
+    <div class="projects" id="projectList"></div></div></section>
+
+  <section id="education" class="reveal"><div class="sec-head"><h2>Education &amp; Certs</h2>
+    <div class="edu" id="eduList"></div></div></section>
+
+  <section id="contact" class="reveal">
+    <div class="contact-box">
+      <h3>Let's work together.</h3>
+      <p>Open to new opportunities, collaborations, and conversations.</p>
+      <div class="btns" id="contactBtns"></div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer"></footer>
+
+<script>
+  const R = RESUME, $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  document.title = `${R.name} — ${R.role}`;
+  $("brand").textContent = R.name;
+  $("name").textContent = R.name;
+  $("role").innerHTML = `<strong>${esc(R.role)}</strong> · ${esc(R.tagline)}`;
+  $("meta").innerHTML = [R.location && `📍 ${esc(R.location)}`, R.email && `✉️ ${esc(R.email)}`, R.phone && `📞 ${esc(R.phone)}`]
+    .filter(Boolean).map(x => `<span>${x}</span>`).join("");
+
+  const linkBtns = (cls) => R.links.map(l => `<a class="btn ${cls}" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("");
+  $("heroBtns").innerHTML =
+    `<a class="btn primary" href="#contact">Get in touch</a>` +
+    (R.resumePdf ? `<a class="btn" href="${esc(R.resumePdf)}" download>Download CV</a>`
+                 : `<button class="btn" onclick="window.print()">Print / Save PDF</button>`) + linkBtns("");
+
+  $("aboutText").innerHTML = R.about.map(p => `<p>${esc(p)}</p>`).join("");
+  $("stats").innerHTML = R.stats.map(s => `<div class="stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join("");
+
+  $("skillGroups").innerHTML =
+    R.skills.bars.map(g => `<div class="card"><h3>${esc(g.group)}</h3>${g.items.map(i => `
+      <div class="bar"><div class="bar-label"><span>${esc(i.name)}</span><span>${i.level}%</span></div>
+      <div class="track"><div class="fill" data-w="${i.level}"></div></div></div>`).join("")}</div>`).join("") +
+    R.skills.tags.map(g => `<div class="card"><h3>${esc(g.group)}</h3><div class="tags">${
+      g.items.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div></div>`).join("");
+
+  $("timeline").innerHTML = R.experience.map(j => `
+    <div class="job"><div class="top"><h3>${esc(j.title)}</h3><span class="when">${esc(j.when)}</span></div>
+    <div class="org">${esc(j.company)}</div><ul>${j.points.map(p => `<li>${esc(p)}</li>`).join("")}</ul></div>`).join("");
+
+  $("projectList").innerHTML = R.projects.map(p => `
+    <div class="card project"><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
+    <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+    ${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">View project →</a>` : ""}</div>`).join("");
+
+  $("eduList").innerHTML = R.education.map(e => `
+    <div class="card"><div><h3>${esc(e.title)}</h3><div class="sub">${esc(e.sub)}</div></div>
+    <span class="when">${esc(e.when)}</span></div>`).join("");
+
+  $("contactBtns").innerHTML =
+    (R.email ? `<a class="btn primary" href="mailto:${esc(R.email)}">✉️ ${esc(R.email)}</a>` : "") + linkBtns("");
+
+  $("footer").textContent = `© ${new Date().getFullYear()} ${R.name}`;
+
+  // Theme: dark by default unless the visitor chose otherwise
+  const root = document.documentElement;
+  let theme; try { theme = localStorage.getItem("theme"); } catch {}
+  if (!theme) theme = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  root.dataset.theme = theme;
+  $("themeBtn").onclick = () => {
+    root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+    try { localStorage.setItem("theme", root.dataset.theme); } catch {}
+  };
+
+  // Scroll reveal + animated skill bars
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add("in");
+    e.target.querySelectorAll(".fill").forEach(f => f.style.width = f.dataset.w + "%");
+    io.unobserve(e.target);
+  }), { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  window.addEventListener("beforeprint", () =>
+    document.querySelectorAll(".fill").forEach(f => f.style.width = f.dataset.w + "%"));
+</script>
+</body>
+</html>
+
