@@ -24,7 +24,7 @@ jobs:
             const m = html.match(/const RESUME = (\{[\s\S]*?\n\});/);
             if (!m) throw new Error('RESUME block not found');
             const R = new Function('return ' + m[1])();
-            for (const k of ['name','role','about','skills','experience','projects','education'])
+            for (const k of ['name','role','about','skills','experience','education'])
               if (!R[k]) throw new Error('RESUME.' + k + ' is missing');
             console.log('RESUME OK for', R.name);
           "

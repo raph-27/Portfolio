@@ -41,6 +41,7 @@
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   document.getElementById("list").innerHTML = PROJECTS.map(p => `
     <a class="card" href="${encodeURIComponent(p.id)}.html">
+      ${p.date ? `<div class="date">${esc(p.date)}</div>` : ""}
       <h2>${esc(p.name)}</h2><p>${esc(p.summary)}</p>
       <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
       <span class="go">View project →</span>

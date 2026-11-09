@@ -205,6 +205,7 @@
 </head>
 <body>
 
+<script src="projects/projects-data.js"></script>
 <script>
 /* =========================================================
    EDIT YOUR RESUME HERE — the whole page is built from this.
@@ -273,12 +274,6 @@ const RESUME = {
         "Managed backup monitoring and disaster recovery processes."
       ]
     }
-  ],
-
-  projects: [
-    { name: "Virtualization Using Proxmox VE", desc: "Home lab virtualization with Proxmox VE.", tags: ["Proxmox", "Virtualization"], url: "projects/proxmox.html" },
-    { name: "Basic Containerization", desc: "Hands-on introduction to running and managing containers.", tags: ["Containers", "Linux"], url: "projects/containers.html" },
-    { name: "AWS Projects", desc: "IAM user creation, EC2 provisioning with Terraform, Auto Scaling Group, load balancing across two instances, and migrating EBS to another region.", tags: ["AWS", "Terraform", "IAM", "EBS"], url: "projects/aws.html" }
   ],
 
   education: [
@@ -386,10 +381,10 @@ const RESUME = {
     <div class="job"><div class="top"><h3>${esc(j.title)}</h3><span class="when">${esc(j.when)}</span></div>
     <div class="org">${esc(j.company)}</div><ul>${j.points.map(p => `<li>${esc(p)}</li>`).join("")}</ul></div>`).join("");
 
-  $("projectList").innerHTML = R.projects.map(p => `
-    <div class="card project"><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
+  $("projectList").innerHTML = PROJECTS.filter(p => p.featured).map(p => `
+    <div class="card project"><h3>${esc(p.name)}</h3><p>${esc(p.summary)}</p>
     <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
-    ${p.url ? `<a href="${esc(p.url)}"${/^https?:/.test(p.url) ? ' target="_blank" rel="noopener"' : ""}>View project →</a>` : ""}</div>`).join("") +
+    <a href="projects/${encodeURIComponent(p.id)}.html">View project →</a></div>`).join("") +
     `<div style="grid-column:1/-1"><a class="btn" href="projects/index.html">View all projects →</a></div>`;
 
   $("eduList").innerHTML = R.education.map(e => `
