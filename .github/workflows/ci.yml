@@ -12,10 +12,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Check index.html exists
-        run: test -f index.html
+        run: test -f index.html && test -f projects/index.html
 
       - name: Validate HTML
-        run: npx --yes html-validate@9 --config .htmlvalidate.json index.html
+        run: npx --yes html-validate@9 --config .htmlvalidate.json index.html "projects/*.html"
 
       - name: Check RESUME data parses
         run: |
