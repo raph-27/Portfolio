@@ -66,7 +66,10 @@
   .sec-head h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); margin: 6px 0 0; }
   @media (max-width: 760px) {
     .sec-head { grid-template-columns: 1fr; gap: 16px; }
-    nav .links { display: none; }
+    nav .wrap { gap: 10px; padding: 0 8px 0 18px; }
+    nav .brand { display: none; }
+    nav .links { flex: 1; gap: 16px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
+    nav .links::-webkit-scrollbar { display: none; }
   }
   .about p { font-size: 18px; margin: 0 0 14px; }
 
@@ -207,9 +210,9 @@ const RESUME = {
   ],
 
   projects: [
-    { name: "Virtualization Using Proxmox VE", desc: "Home lab virtualization with Proxmox VE.", tags: ["Proxmox", "Virtualization"], url: "https://raph-27.github.io/Blog/" },
-    { name: "Basic Containerization", desc: "Hands-on introduction to running and managing containers.", tags: ["Containers", "Linux"], url: "https://raph-27.github.io/Blog/" },
-    { name: "AWS Projects", desc: "IAM user creation, EC2 provisioning with Terraform, Auto Scaling Group, load balancing across two instances, and migrating EBS to another region.", tags: ["AWS", "Terraform", "IAM", "EBS"], url: "https://raph-27.github.io/Blog/" }
+    { name: "Virtualization Using Proxmox VE", desc: "Home lab virtualization with Proxmox VE.", tags: ["Proxmox", "Virtualization"], url: "projects.html#proxmox" },
+    { name: "Basic Containerization", desc: "Hands-on introduction to running and managing containers.", tags: ["Containers", "Linux"], url: "projects.html#containers" },
+    { name: "AWS Projects", desc: "IAM user creation, EC2 provisioning with Terraform, Auto Scaling Group, load balancing across two instances, and migrating EBS to another region.", tags: ["AWS", "Terraform", "IAM", "EBS"], url: "projects.html#aws" }
   ],
 
   education: [
@@ -231,7 +234,7 @@ const RESUME = {
     <a href="#top" class="brand" id="brand"></a>
     <div class="links">
       <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
-      <a href="#projects">Projects</a><a href="#contact">Contact</a>
+      <a href="projects.html">Projects</a><a href="#contact">Contact</a>
     </div>
     <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">◐</button>
   </div>
@@ -306,7 +309,8 @@ const RESUME = {
   $("projectList").innerHTML = R.projects.map(p => `
     <div class="card project"><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
     <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
-    ${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">View project →</a>` : ""}</div>`).join("");
+    ${p.url ? `<a href="${esc(p.url)}"${/^https?:/.test(p.url) ? ' target="_blank" rel="noopener"' : ""}>View project →</a>` : ""}</div>`).join("") +
+    `<div style="grid-column:1/-1"><a class="btn" href="projects.html">View all projects →</a></div>`;
 
   $("eduList").innerHTML = R.education.map(e => `
     <div class="card"><div><h3>${esc(e.title)}</h3><div class="sub">${esc(e.sub)}</div></div>
