@@ -59,10 +59,22 @@
   }
 
   .hero { padding: 88px 0 64px; }
-  .hero { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
-  .hero-text { flex: 1 1 auto; min-width: 0; }
-  .hero .avatar { flex: 0 0 auto; width: clamp(110px, 20vw, 200px); height: clamp(110px, 20vw, 200px); border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
-  @media (max-width: 560px) { .hero { gap: 16px; align-items: flex-start; } }
+  .hero-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .hero-id { min-width: 0; }
+  .hero .avatar {
+    flex: 0 0 auto; width: clamp(140px, 28vw, 280px); height: clamp(140px, 28vw, 280px);
+    border-radius: 50%; object-fit: cover; border: 4px solid var(--accent);
+    animation: av-in .9s cubic-bezier(.2,.8,.2,1) both, av-float 5s ease-in-out .9s infinite, av-glow 3s ease-in-out infinite;
+    transition: transform .3s;
+  }
+  .hero .avatar:hover { animation-play-state: running, paused, running; transform: scale(1.06) rotate(-2deg); }
+  @keyframes av-in { from { opacity: 0; transform: scale(.6) rotate(-12deg); } to { opacity: 1; transform: none; } }
+  @keyframes av-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  @keyframes av-glow {
+    0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent), 0 10px 30px rgba(0,0,0,.18); }
+    50% { box-shadow: 0 0 0 14px color-mix(in srgb, var(--accent) 0%, transparent), 0 14px 40px color-mix(in srgb, var(--accent) 35%, transparent); }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero .avatar { animation: none; } }
   .hero .eyebrow { font-family: "JetBrains Mono", monospace; color: var(--accent); font-size: 14px; }
   .hero h1 { font-size: clamp(40px, 7vw, 68px); line-height: 1.05; letter-spacing: -.035em; margin: 12px 0 16px; }
   .hero .role { font-size: clamp(18px, 2.4vw, 22px); color: var(--muted); margin: 0 0 28px; max-width: 660px; }
@@ -76,6 +88,23 @@
   }
   .btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
   .btn:hover { text-decoration: none; transform: translateY(-1px); }
+  .btn.download {
+    position: relative; overflow: hidden; color: var(--on-accent); border-color: transparent;
+    background: linear-gradient(120deg, var(--accent), #3b82f6, var(--accent)); background-size: 200% 100%;
+    animation: dl-pulse 2.2s ease-out infinite, dl-shift 4s linear infinite;
+  }
+  .btn.download::after {
+    content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent);
+    transform: skewX(-20deg); animation: dl-shine 3s ease-in-out infinite;
+  }
+  .btn.download .dl-icon { display: inline-block; animation: dl-bounce 1.4s ease-in-out infinite; }
+  .btn.download:hover { transform: translateY(-2px) scale(1.04); animation-play-state: paused, running; }
+  @keyframes dl-pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); } 70%, 100% { box-shadow: 0 0 0 14px transparent; } }
+  @keyframes dl-shift { to { background-position: -200% 0; } }
+  @keyframes dl-shine { 0%, 60% { left: -60%; } 100% { left: 130%; } }
+  @keyframes dl-bounce { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(3px); } }
+  @media (prefers-reduced-motion: reduce) { .btn.download, .btn.download::after, .btn.download .dl-icon { animation: none; } }
 
   section { padding: 56px 0; border-top: 1px solid var(--line); }
   .sec-head { display: grid; grid-template-columns: 200px 1fr; gap: 32px; }
@@ -188,10 +217,9 @@ const RESUME = {
   location: "Philippines",
   email: "",
   phone: "",
-  links: [
-    { label: "LinkedIn", url: "https://www.linkedin.com/in/raphael-de-luis-b53a0320b/" }
+  links: [  
   ],
-  resumePdf: "",
+  resumePdf: "Raphael De Luis-Resume.pdf",
 
   about: [
     "IT Infrastructure and Network Engineer with experience in enterprise networking, systems administration, cybersecurity, virtualization, and cloud technologies.",
@@ -282,14 +310,16 @@ const RESUME = {
 
 <main class="wrap" id="top">
   <header class="hero reveal">
-    <div class="hero-text">
-      <div class="eyebrow">Hello, I'm</div>
-      <h1 id="name">Raphael De Luis</h1>
-      <p class="role" id="role"></p>
-      <div class="meta" id="meta"></div>
-      <div class="btns" id="heroBtns"></div>
+    <div class="hero-top">
+      <div class="hero-id">
+        <div class="eyebrow">Hello, I'm</div>
+        <h1 id="name">Raphael De Luis</h1>
+      </div>
+      <img class="avatar" src="Pictures/DP.jpg" alt="Portrait of Raphael De Luis" width="200" height="200">
     </div>
-    <img class="avatar" src="Pictures/DP.jpg" alt="Portrait of Raphael De Luis" width="200" height="200">
+    <p class="role" id="role"></p>
+    <div class="meta" id="meta"></div>
+    <div class="btns" id="heroBtns"></div>
   </header>
 
   <section id="about" class="reveal"><div class="sec-head"><h2>About</h2>
@@ -340,8 +370,7 @@ const RESUME = {
   const linkBtns = (cls) => R.links.map(l => `<a class="btn ${cls}" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("");
   $("heroBtns").innerHTML =
     `<a class="btn primary" href="#contact">Get in touch</a>` +
-    (R.resumePdf ? `<a class="btn" href="${esc(R.resumePdf)}" download>Download CV</a>`
-                 : `<button class="btn" onclick="window.print()">Print / Save PDF</button>`) + linkBtns("");
+    `<a class="btn download" href="${encodeURI(R.resumePdf)}" download><span class="dl-icon" aria-hidden="true">⬇</span> Download Resume</a>` + linkBtns("");
 
   $("aboutText").innerHTML = R.about.map(p => `<p>${esc(p)}</p>`).join("");
   $("stats").innerHTML = R.stats.map(s => `<div class="stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join("");
