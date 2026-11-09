@@ -47,6 +47,10 @@
   }
 
   .hero { padding: 88px 0 64px; }
+  .hero { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+  .hero-text { flex: 1 1 auto; min-width: 0; }
+  .hero .avatar { flex: 0 0 auto; width: clamp(110px, 20vw, 200px); height: clamp(110px, 20vw, 200px); border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
+  @media (max-width: 560px) { .hero { gap: 16px; align-items: flex-start; } }
   .hero .eyebrow { font-family: "JetBrains Mono", monospace; color: var(--accent); font-size: 14px; }
   .hero h1 { font-size: clamp(40px, 7vw, 68px); line-height: 1.05; letter-spacing: -.035em; margin: 12px 0 16px; }
   .hero .role { font-size: clamp(18px, 2.4vw, 22px); color: var(--muted); margin: 0 0 28px; max-width: 660px; }
@@ -87,6 +91,12 @@
   .track { height: 6px; background: var(--accent-soft); border-radius: 99px; overflow: hidden; }
   .fill { height: 100%; width: 0; background: var(--accent); border-radius: 99px; transition: width 1s cubic-bezier(.2,.7,.2,1); }
   .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-groups { grid-template-columns: 1fr; gap: 8px; }
+  .skill-groups .card { display: grid; grid-template-columns: 200px 1fr; align-items: center; gap: 6px 16px; padding: 10px 16px; }
+  .skill-groups .card h3 { margin: 0; font-size: 14px; }
+  .skill-groups .tags { gap: 5px; }
+  .skill-groups .tag { padding: 2px 8px; font-size: 12px; }
+  @media (max-width: 560px) { .skill-groups .card { grid-template-columns: 1fr; } }
   .tag { background: var(--accent-soft); color: var(--accent); padding: 4px 10px; border-radius: 99px; font-size: 13px; font-weight: 500; }
 
   .job { position: relative; padding: 0 0 32px 28px; border-left: 2px solid var(--line); }
@@ -110,6 +120,10 @@
 
   .edu { display: grid; gap: 14px; }
   .edu .card { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; }
+  .edu .card { align-items: center; }
+  .edu .edu-text { flex: 1 1 240px; }
+  .edu .thumb { flex: 0 0 auto; display: block; width: 96px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .edu .thumb img { display: block; width: 100%; height: auto; }
   .edu h3 { margin: 0; }
   .edu .sub { color: var(--muted); font-size: 15px; }
 
@@ -160,7 +174,7 @@ const RESUME = {
   ],
   stats: [
     { value: "200+", label: "Clients supported" },
-    { value: "8",    label: "Certifications" },
+    { value: "7",    label: "Certifications" },
     { value: "2022", label: "In IT since" }
   ],
 
@@ -173,9 +187,8 @@ const RESUME = {
       { group: "Cloud & Automation", items: ["AWS", "Terraform", "Hybrid Cloud"] },
       { group: "Backup & Disaster Recovery", items: ["Synology NAS", "RAID", "Backup Solutions", "Recovery Strategies"] },
       { group: "Security Monitoring", items: ["Firewall Management", "Vulnerability Assessment", "Wazuh", "Splunk"] },
-      { group: "IT Operations", items: ["L1 / L2 / L3 Support", "AnyDesk", "TeamViewer", "Root Cause Analysis", "SLA Ticket Management"] },
-      { group: "Documentation", items: ["Network Documentation", "Infrastructure Diagrams", "Deployment Plans", "Technical Reports"] },
-      { group: "Currently Pursuing", items: ["AWS Solutions Architect – Associate", "Cisco CCNA", "Terraform Associate (002)", "Azure AZ-900", "GCP Cloud Digital Leader"] }
+      { group: "IT Operations", items: ["L1 / L2 / L3 Support","Root Cause Analysis", "SLA Ticket Management"] },
+      { group: "Documentation", items: ["Network Documentation", "Infrastructure Diagrams", "Deployment Plans", "Technical Reports"] }
     ]
   },
 
@@ -216,15 +229,17 @@ const RESUME = {
   ],
 
   education: [
-    { title: "B.S. in Information Technology", sub: "Quezon City University · Quezon City University Scholarship recipient", when: "2020 — 2024" },
-    { title: "AWS Certified Cloud Practitioner", sub: "Amazon Web Services", when: "Certification" },
-    { title: "Fortinet Cybersecurity Associate", sub: "Fortinet", when: "Certification" },
-    { title: "Fortinet Cybersecurity Associate – FortiGate Operator", sub: "Fortinet", when: "Certification" },
-    { title: "Six Sigma White Belt", sub: "Council for Six Sigma Certification", when: "Certification" },
-    { title: "TP-Link Omada Certified Network Administrator", sub: "TP-Link", when: "Certification" },
-    { title: "TP-Link Enterprise Switching and Routing", sub: "TP-Link", when: "Certification" },
-    { title: "Ruijie Certified Network Associate", sub: "Ruijie", when: "Certification" },
-    { title: "Sangfor Certified Sales Specialist", sub: "Sangfor", when: "Certification" }
+    { title: "B.S. in Information Technology", sub: "Quezon City University · Quezon City University Scholarship recipient", when: "2020 — 2024" }
+  ],
+
+  certs: [
+    { title: "Cisco Certified Network Associate (CCNA)", sub: "Cisco · Valid through Nov 6, 2029", when: "Nov 2026", img: "Pictures/ccna_cert-1.jpg" },
+    { title: "AWS Certified Cloud Practitioner", sub: "Amazon Web Services", when: "Certification", img: "Pictures/AWS.png" },
+    { title: "Fortinet Cybersecurity Associate", sub: "Fortinet · Valid through Jan 13, 2027", when: "Jan 2025", img: "Pictures/Fortinet.png" },
+    { title: "Six Sigma White Belt", sub: "Council for Six Sigma Certification", when: "Certification", img: "Pictures/White Belt.png" },
+    { title: "TP-Link Omada Certified Network Administrator (OCNA) – Wireless", sub: "TP-Link · Valid through Oct 25, 2027", when: "Certification", img: "Pictures/TP-Link 2.png" },
+    { title: "TP-Link Network Associate – Enterprise Routing and Switching", sub: "TP-Link · Valid through Sep 27, 2027", when: "Certification", img: "Pictures/TP-Link.png" },
+    { title: "Ruijie Certified Network Associate", sub: "Ruijie", when: "Certification", img: "Pictures/Ruijie.png" }
   ]
 };
 </script>
@@ -242,11 +257,14 @@ const RESUME = {
 
 <main class="wrap" id="top">
   <header class="hero reveal">
-    <div class="eyebrow">Hello, I'm</div>
-    <h1 id="name"></h1>
-    <p class="role" id="role"></p>
-    <div class="meta" id="meta"></div>
-    <div class="btns" id="heroBtns"></div>
+    <div class="hero-text">
+      <div class="eyebrow">Hello, I'm</div>
+      <h1 id="name"></h1>
+      <p class="role" id="role"></p>
+      <div class="meta" id="meta"></div>
+      <div class="btns" id="heroBtns"></div>
+    </div>
+    <img class="avatar" src="Pictures/DP.jpg" alt="Portrait of Raphael De Luis" width="200" height="200">
   </header>
 
   <section id="about" class="reveal"><div class="sec-head"><h2>About</h2>
@@ -261,8 +279,11 @@ const RESUME = {
   <section id="projects" class="reveal"><div class="sec-head"><h2>Projects</h2>
     <div class="projects" id="projectList"></div></div></section>
 
-  <section id="education" class="reveal"><div class="sec-head"><h2>Education &amp; Certs</h2>
+  <section id="education" class="reveal"><div class="sec-head"><h2>Education</h2>
     <div class="edu" id="eduList"></div></div></section>
+
+  <section id="certs" class="reveal"><div class="sec-head"><h2>Certifications</h2>
+    <div class="edu" id="certList"></div></div></section>
 
   <section id="contact" class="reveal">
     <div class="contact-box">
@@ -313,8 +334,12 @@ const RESUME = {
     `<div style="grid-column:1/-1"><a class="btn" href="projects/index.html">View all projects →</a></div>`;
 
   $("eduList").innerHTML = R.education.map(e => `
-    <div class="card"><div><h3>${esc(e.title)}</h3><div class="sub">${esc(e.sub)}</div></div>
+    <div class="card"><div class="edu-text"><h3>${esc(e.title)}</h3><div class="sub">${esc(e.sub)}</div></div>
     <span class="when">${esc(e.when)}</span></div>`).join("");
+
+  $("certList").innerHTML = R.certs.map(e => `
+    <div class="card"><a class="thumb" href="${encodeURI(e.img)}" target="_blank" rel="noopener"><img src="${encodeURI(e.img)}" alt="${esc(e.title)} certificate" loading="lazy"></a>
+    <div class="edu-text"><h3>${esc(e.title)}</h3><div class="sub">${esc(e.sub)}</div></div></div>`).join("");
 
   $("contactBtns").innerHTML =
     (R.email ? `<a class="btn primary" href="mailto:${esc(R.email)}">✉️ ${esc(R.email)}</a>` : "") + linkBtns("");
