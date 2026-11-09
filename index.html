@@ -210,9 +210,9 @@ const RESUME = {
   ],
 
   projects: [
-    { name: "Virtualization Using Proxmox VE", desc: "Home lab virtualization with Proxmox VE.", tags: ["Proxmox", "Virtualization"], url: "projects.html#proxmox" },
-    { name: "Basic Containerization", desc: "Hands-on introduction to running and managing containers.", tags: ["Containers", "Linux"], url: "projects.html#containers" },
-    { name: "AWS Projects", desc: "IAM user creation, EC2 provisioning with Terraform, Auto Scaling Group, load balancing across two instances, and migrating EBS to another region.", tags: ["AWS", "Terraform", "IAM", "EBS"], url: "projects.html#aws" }
+    { name: "Virtualization Using Proxmox VE", desc: "Home lab virtualization with Proxmox VE.", tags: ["Proxmox", "Virtualization"], url: "projects/project.html?id=proxmox" },
+    { name: "Basic Containerization", desc: "Hands-on introduction to running and managing containers.", tags: ["Containers", "Linux"], url: "projects/project.html?id=containers" },
+    { name: "AWS Projects", desc: "IAM user creation, EC2 provisioning with Terraform, Auto Scaling Group, load balancing across two instances, and migrating EBS to another region.", tags: ["AWS", "Terraform", "IAM", "EBS"], url: "projects/project.html?id=aws" }
   ],
 
   education: [
@@ -234,7 +234,7 @@ const RESUME = {
     <a href="#top" class="brand" id="brand"></a>
     <div class="links">
       <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
-      <a href="projects.html">Projects</a><a href="#contact">Contact</a>
+      <a href="projects/index.html">Projects</a><a href="#contact">Contact</a>
     </div>
     <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">◐</button>
   </div>
@@ -310,7 +310,7 @@ const RESUME = {
     <div class="card project"><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
     <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
     ${p.url ? `<a href="${esc(p.url)}"${/^https?:/.test(p.url) ? ' target="_blank" rel="noopener"' : ""}>View project →</a>` : ""}</div>`).join("") +
-    `<div style="grid-column:1/-1"><a class="btn" href="projects.html">View all projects →</a></div>`;
+    `<div style="grid-column:1/-1"><a class="btn" href="projects/index.html">View all projects →</a></div>`;
 
   $("eduList").innerHTML = R.education.map(e => `
     <div class="card"><div><h3>${esc(e.title)}</h3><div class="sub">${esc(e.sub)}</div></div>
