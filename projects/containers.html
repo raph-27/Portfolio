@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Basic Containerization — Raphael De Luis</title>
-<meta name="description" content="A hands-on introduction to packaging and running applications in containers.">
+<meta name="description" content="A Raspberry Pi 3 running OpenMediaVault as a multi-service home server with Docker Compose, Pi-hole and Plex.">
+<meta name="color-scheme" content="light dark">
+<script src="../js/theme.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -25,33 +27,53 @@
 <main class="wrap narrow">
   <header class="page">
     <div class="crumb"><a href="index.html">projects</a> / containers</div>
-    <h1>Basic Containerization</h1>
-    <p>A hands-on introduction to packaging and running applications in containers.</p>
-    <div class="tags"><span class="tag">Containers</span><span class="tag">Linux</span></div>
+    <h1>Basic Containerization Using Raspberry Pi 3 with OpenMediaVault</h1>
+    <p>A spare Raspberry Pi 3 turned into a multi-service home server with OpenMediaVault, Docker Compose, Pi-hole and Plex.</p>
+    <div class="tags"><span class="tag">Containers</span><span class="tag">Docker</span><span class="tag">Linux</span><span class="tag">Raspberry Pi</span><span class="tag">OpenMediaVault</span><span class="tag">Pi-hole</span><span class="tag">Plex</span></div>
   </header>
 
   <section class="block">
-    <h2>What I built</h2>
-    <ul>
-      <li>Placeholder: describe the container(s) you built and what they run.</li>
-    </ul>
+    <h2>Overview</h2>
+    <p>I've got a spare Raspberry Pi 3, and it's incredible how much this tiny, credit-card-sized computer can accomplish in a home lab. With the help of OMV (OpenMediaVault), a Debian-based Linux OS designed for storage and server applications, I've turned this humble board into a powerful multi-service server.</p>
+    <p>OpenMediaVault (OMV) is a free, open-source NAS (Network Attached Storage) operating system that makes it easy to manage file storage on a server, a Raspberry Pi or an old PC. It gives you a web-based GUI to manage storage, users, sharing protocols (like SMB, NFS and FTP), and services like Docker and rsync, without needing deep Linux knowledge.</p>
+
+
   </section>
 
   <section class="block">
-    <h2>What I learned</h2>
-    <ul>
-      <li>Placeholder: images vs. containers, ports and volumes, how containers differ from VMs.</li>
-    </ul>
+    <h2>The hardware</h2>
+
+
+    <img class="shot" src="images/containers/hardwarepi.jpg" alt="The Raspberry Pi 3 hardware setup" loading="lazy">
   </section>
 
-  <div class="pager">
-    <a class="prev" href="proxmox.html"><small>← Previous</small>Virtualization Using Proxmox VE</a>
-    <a class="next" href="aws.html"><small>Next →</small>AWS Projects</a>
-  </div>
+  <section class="block">
+    <h2>The containers</h2>
+    <p>I installed these containers using Docker Compose.</p>
+
+    <img class="shot" src="images/containers/the-containers.jpg" alt="The running containers managed with Docker Compose" loading="lazy">
+  </section>
+
+  <section class="block">
+    <h2>Pi-hole</h2>
+    <p>Pi-hole is a network-wide ad blocker that you can run on a local device like a Raspberry Pi, a Docker container, or even a virtual machine. It works as a DNS sinkhole, blocking requests to advertising and tracking domains for all devices on your network.</p>
+
+    <img class="shot" src="images/containers/dns-server.jpg" alt="The Pi-hole dashboard" loading="lazy">
+  </section>
+
+  <section class="block">
+    <h2>Plex Media Server</h2>
+    <p>Plex Media Server is personal media server software that organizes your video, music and photo collections and streams them to your devices (TVs, phones, computers and tablets) anywhere, over your network or the internet.</p>
+
+    <img class="shot" src="images/containers/media-server.jpg" alt="Plex Media Server running in a container" loading="lazy">
+    <img class="shot" src="images/containers/media-server-web.jpg" alt="The Plex web interface" loading="lazy">
+  </section>
+
   <a class="back" href="index.html">← All projects</a>
 </main>
 <footer id="footer"></footer>
 
 <script src="page.js"></script>
+<script src="lightbox.js"></script>
 </body>
 </html>

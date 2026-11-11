@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raphael De Luis — Resume</title>
 <meta name="description" content="Resume and skills of Raphael De Luis, IT Infrastructure &amp; Network Engineer.">
+<meta name="color-scheme" content="light dark">
+<script src="js/theme.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
@@ -18,7 +20,7 @@
     <a href="#top" class="brand" id="brand">Raphael De Luis</a>
     <div class="links">
       <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
-      <a href="projects/index.html">Projects</a><a href="#contact">Contact</a>
+      <a href="#projects">Projects</a><a href="#contact">Contact</a>
     </div>
     <button type="button" class="icon-btn" id="themeBtn" aria-label="Toggle theme">◐</button>
   </div>
@@ -163,11 +165,6 @@
 
     $("footer").textContent = `© ${new Date().getFullYear()} ${R.name}`;
 
-    // Theme: dark by default unless the visitor chose otherwise
-    const root = document.documentElement;
-    let theme; try { theme = localStorage.getItem("theme"); } catch {}
-    if (!theme) theme = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-    root.dataset.theme = theme;
     const lb = $("lightbox"), lbImg = $("lightboxImg"), BLANK = lbImg.src;
     const closeLb = () => { lb.hidden = true; lbImg.src = BLANK; document.body.style.overflow = ""; };
     $("certList").addEventListener("click", ev => {
@@ -186,11 +183,6 @@
     const syncNav = () => topNav.classList.toggle("floating", window.scrollY > 100);
     window.addEventListener("scroll", syncNav, { passive: true });
     syncNav();
-
-    $("themeBtn").onclick = () => {
-      root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
-      try { localStorage.setItem("theme", root.dataset.theme); } catch {}
-    };
 
     // Scroll reveal + animated skill bars
     const io = new IntersectionObserver(entries => entries.forEach(e => {

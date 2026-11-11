@@ -1,0 +1,104 @@
+/* ==========================================================================
+   Liquid glass layer. Loaded after each page's own stylesheet.
+   Frosted, translucent surfaces with a blurred/saturated backdrop, a bright
+   specular edge on top, and a soft coloured glow behind everything.
+   ========================================================================== */
+
+:root {
+  --glass-bg: rgba(255, 255, 255, .50);
+  --glass-bg-hover: rgba(255, 255, 255, .68);
+  --glass-edge: rgba(255, 255, 255, .75);
+  --glass-line: rgba(255, 255, 255, .55);
+  --glass-gloss: rgba(255, 255, 255, .55);
+  --glass-shadow: 0 10px 34px rgba(40, 60, 110, .14);
+  --glass-inner: inset 0 1px 0 rgba(255, 255, 255, .9), inset 0 -1px 0 rgba(255, 255, 255, .25), inset 0 0 22px rgba(255, 255, 255, .25);
+  --glass-blur: blur(18px) saturate(170%);
+}
+[data-theme="dark"] {
+  --glass-bg: rgba(255, 255, 255, .055);
+  --glass-bg-hover: rgba(255, 255, 255, .10);
+  --glass-edge: rgba(255, 255, 255, .22);
+  --glass-line: rgba(255, 255, 255, .13);
+  --glass-gloss: rgba(255, 255, 255, .12);
+  --glass-shadow: 0 12px 36px rgba(0, 0, 0, .42);
+  --glass-inner: inset 0 1px 0 rgba(255, 255, 255, .22), inset 0 -1px 0 rgba(255, 255, 255, .04), inset 0 0 22px rgba(255, 255, 255, .03);
+  --glass-blur: blur(20px) saturate(160%);
+}
+
+/* Colour behind the glass, so there is something for it to bend. Dark mode only:
+   light mode already has its own gradient in the page stylesheet. */
+[data-theme="dark"] body {
+  background-color: #070a10;
+  background-image:
+    radial-gradient(circle at 10% 6%, rgba(52, 211, 160, .20), transparent 38%),
+    radial-gradient(circle at 92% 20%, rgba(59, 130, 246, .20), transparent 40%),
+    radial-gradient(circle at 18% 72%, rgba(139, 92, 246, .16), transparent 42%),
+    radial-gradient(circle at 88% 94%, rgba(52, 211, 160, .14), transparent 38%);
+  background-attachment: fixed;
+}
+
+/* ---- the glass itself ---------------------------------------------------- */
+.card, .stat, .contact-box, .skill-tile, .pill:not(.on), .icon-btn,
+.btn:not(.primary):not(.download), .block, .pager a, nav.floating {
+  background-color: var(--glass-bg);
+  background-image: linear-gradient(135deg, var(--glass-gloss) 0%, rgba(255, 255, 255, 0) 42%);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-line);
+  border-top-color: var(--glass-edge);
+  box-shadow: var(--glass-shadow), var(--glass-inner);
+}
+
+/* The floating bar keeps its pill shape and slide-in; just gets the glass finish */
+nav.floating { border-radius: 999px; }
+
+/* Lift and brighten on hover */
+.card:hover, .skill-tile:hover, .pager a:hover, .btn:not(.primary):not(.download):hover, .pill:not(.on):hover {
+  background-color: var(--glass-bg-hover);
+}
+
+/* Contact box keeps its accent edge */
+.contact-box { border-color: color-mix(in srgb, var(--accent) 55%, transparent); }
+
+/* Primary button: glossy accent glass */
+.btn.primary {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, .32), rgba(255, 255, 255, 0) 55%);
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--accent) 35%, transparent), inset 0 1px 0 rgba(255, 255, 255, .55);
+}
+
+/* Certificate thumbnails get a glass frame */
+.edu .thumb { border-color: var(--glass-line); box-shadow: inset 0 1px 0 var(--glass-edge); }
+
+/* Certificate / image popup: blurred backdrop instead of flat black */
+.lightbox { -webkit-backdrop-filter: blur(12px) saturate(140%); backdrop-filter: blur(12px) saturate(140%); background: rgba(5, 8, 14, .6); }
+.lightbox-close { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, .25); }
+
+/* Browsers without backdrop-filter: fall back to solid surfaces */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .card, .stat, .contact-box, .skill-tile, .pill:not(.on), .icon-btn,
+  .btn:not(.primary):not(.download), .block, .pager a, nav.floating { background-color: var(--surface); }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .card, .stat, .contact-box, .skill-tile, .pill:not(.on), .icon-btn,
+  .btn:not(.primary):not(.download), .block, .pager a, nav.floating {
+    background-color: var(--surface); background-image: none; -webkit-backdrop-filter: none; backdrop-filter: none;
+  }
+}
+
+@media print {
+  .card, .stat, .contact-box, .skill-tile, .pill, .icon-btn, .btn, .block, .pager a, nav {
+    background: #fff !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; box-shadow: none !important;
+  }
+}
+
+/* Light-mode backdrop for pages that don't carry their own (project pages) */
+:root:not([data-theme="dark"]) body {
+  background-color: #eef2f7;
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(15, 157, 118, .20), transparent 38%),
+    radial-gradient(circle at 92% 22%, rgba(59, 130, 246, .16), transparent 40%),
+    radial-gradient(circle at 20% 70%, rgba(139, 92, 246, .10), transparent 40%),
+    radial-gradient(circle at 85% 95%, rgba(15, 157, 118, .14), transparent 38%);
+  background-attachment: fixed;
+}

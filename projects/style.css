@@ -47,7 +47,7 @@ nav .links a:hover, nav .links a.active { color: var(--text); text-decoration: n
   nav .links::-webkit-scrollbar { display: none; }
 }
 
-header.page { padding: 64px 0 24px; }
+header.page { padding: 100px 0 24px; }
 .crumb { font-family: "JetBrains Mono", monospace; font-size: 14px; color: var(--muted); }
 .crumb a { color: var(--accent); }
 header.page h1 { font-size: clamp(32px, 5.5vw, 50px); line-height: 1.1; letter-spacing: -.03em; margin: 12px 0 14px; }
@@ -73,7 +73,7 @@ header.page p { color: var(--muted); font-size: 18px; margin: 0 0 18px; }
 footer { padding: 24px 0 48px; color: var(--muted); font-size: 14px; text-align: center; }
 
 /* Projects list page */
-.list header.page { padding: 72px 0 32px; }
+.list header.page { padding: 108px 0 32px; }
 .list header.page h1 { font-size: clamp(36px, 6vw, 56px); line-height: 1.08; margin: 10px 0 14px; }
 .list header.page p { max-width: 640px; margin: 0; }
 .list .crumb { color: var(--accent); }
@@ -90,3 +90,27 @@ footer { padding: 24px 0 48px; color: var(--muted); font-size: 14px; text-align:
 /* Screenshots inside project pages */
 .shot { display: block; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; margin-top: 8px; }
 .card .date { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+
+/* Click-to-enlarge images */
+.shot { cursor: zoom-in; transition: transform .15s, box-shadow .15s; }
+.shot:hover { transform: scale(1.01); box-shadow: 0 8px 28px rgba(0,0,0,.18); }
+.shot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.lightbox { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(0,0,0,.85); cursor: zoom-out; }
+.lightbox[hidden] { display: none; }
+.lightbox img { max-width: min(1400px, 100%); max-height: 100%; object-fit: contain; border-radius: 6px; background: #fff; cursor: default; }
+.lightbox-close { position: absolute; top: 14px; right: 18px; width: 40px; height: 40px; border: 0; border-radius: 50%; background: rgba(255,255,255,.15); color: #fff; font-size: 26px; line-height: 1; cursor: pointer; }
+
+/* Step-by-step walkthroughs and prose blocks */
+.narrow { counter-reset: step; }
+.block p { margin: 0 0 12px; color: var(--muted); }
+.block p:last-child { margin-bottom: 0; }
+.block code { font-family: "JetBrains Mono", monospace; font-size: .86em; background: var(--accent-soft); color: var(--accent); padding: 1px 6px; border-radius: 6px; }
+.steps { list-style: none; counter-reset: none; margin: 0; padding: 0; }
+.steps li { counter-increment: step; position: relative; padding-left: 40px; margin: 0 0 26px; color: var(--muted); }
+.steps li:last-child { margin-bottom: 0; }
+.steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 13px; display: grid; place-items: center; }
+.steps li p { margin: 0 0 10px; }
+.steps li .shot + .shot { margin-top: 12px; }
+.block .shot:first-of-type { margin-top: 12px; }
+.block li a { font-weight: 600; }

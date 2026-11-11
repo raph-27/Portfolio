@@ -15,6 +15,13 @@ const PAGE = { name: "Raphael De Luis" };
 
 const PROJECTS = [
   {
+    id: "omada-sdn",
+    name: "SOHO Network with TP-Link Omada SDN",
+    summary: "A cloud-managed SOHO network on a router on a stick: an ER605 gateway, managed switch, six outdoor access points and VLAN segmentation, all run from an OC200 controller.",
+    tags: ["TP-Link Omada", "SDN", "VLAN", "Router on a Stick", "Wi-Fi"],
+    featured: true
+  },
+  {
     id: "proxmox",
     name: "Virtualization Using Proxmox VE",
     summary: "A home lab built on Proxmox VE for running and testing enterprise-style infrastructure.",
@@ -26,13 +33,6 @@ const PROJECTS = [
     name: "Basic Containerization",
     summary: "A hands-on introduction to packaging and running applications in containers.",
     tags: ["Containers", "Linux"],
-    featured: true
-  },
-  {
-    id: "aws",
-    name: "AWS Projects",
-    summary: "Hands-on AWS labs covering identity, compute, scaling, load balancing and storage.",
-    tags: ["AWS", "Terraform", "IAM", "EC2", "Auto Scaling", "EBS"],
     featured: true
   }
 ];

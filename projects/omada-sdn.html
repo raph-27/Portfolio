@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOHO Network with TP-Link Omada SDN — Raphael De Luis</title>
+<meta name="description" content="A small office/home office network on a TP-Link Omada software-defined network: router on a stick, VLANs, and cloud-managed access points.">
+<meta name="color-scheme" content="light dark">
+<script src="../js/theme.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="../index.html" class="brand">Raphael De Luis</a>
+    <div class="links">
+      <a href="../index.html#about">About</a><a href="../index.html#skills">Skills</a><a href="../index.html#experience">Experience</a>
+      <a href="index.html" class="active">Projects</a><a href="../index.html#contact">Contact</a>
+    </div>
+    <button type="button" class="icon-btn" id="themeBtn" aria-label="Toggle theme">◐</button>
+  </div>
+</nav>
+
+<main class="wrap narrow">
+  <header class="page">
+    <div class="crumb"><a href="index.html">projects</a> / omada-sdn</div>
+    <h1>SOHO Network with TP-Link Omada SDN</h1>
+    <p>Internet connectivity for clients on a software-defined network, with a router on a stick and a cloud-accessible controller for monitoring, troubleshooting and configuration.</p>
+    <div class="tags"><span class="tag">TP-Link Omada</span><span class="tag">SDN</span><span class="tag">VLAN</span><span class="tag">Router on a Stick</span><span class="tag">Wi-Fi</span><span class="tag">Networking</span></div>
+  </header>
+
+  <section class="block">
+    <h2>Overview</h2>
+    <ul>
+      <li>I helped implement this setup. Its purpose is to provide internet connectivity to our clients using software-defined networking (SDN).</li>
+      <li>It is a small office/home office (SOHO) network where the router is the main gateway, a design known as router on a stick (ROAS).</li>
+      <li>Everything is managed from a TP-Link OC200 network controller, which can be reached through the cloud for troubleshooting, monitoring and configuration.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Network topology</h2>
+    <ul>
+      <li>The ER605 router is the gateway and connects to a single switch.</li>
+      <li>The switch connects the OC200 controller, the admin printer, and six access points that serve the wireless users.</li>
+    </ul>
+    <img class="shot" src="images/omada-sdn/topology.png" alt="Network topology: ER605 router to a switch, with the OC200 controller, an admin printer and six access points serving wireless users" width="975" height="738">
+  </section>
+
+  <section class="block">
+    <h2>Devices</h2>
+    <ul>
+      <li><strong>Router:</strong> TP-Link ER605, the main gateway.</li>
+      <li><strong>Switch:</strong> TP-Link SG3428MP.</li>
+      <li><strong>Access points:</strong> six EAP610-Outdoor units, placed by area (2nd floor railing, ground floor, and the unit blocks).</li>
+      <li><strong>Controller:</strong> TP-Link OC200 running the Omada software, with every device adopted and shown as connected.</li>
+    </ul>
+    <img class="shot" src="images/omada-sdn/devices.png" alt="Omada controller device list showing the ER605, the SG3428MP switch and six EAP610-Outdoor access points, all connected" width="975" height="351">
+  </section>
+
+  <section class="block">
+    <h2>VLANs and segmentation</h2>
+    <ul>
+      <li>Separate networks (VLANs) keep different groups of users apart, each with its own /24 subnet.</li>
+      <li>One of the networks uses a captive portal for guest sign-in.</li>
+      <li>The default LAN is kept for management and secure devices.</li>
+    </ul>
+    <img class="shot" src="images/omada-sdn/vlans.png" alt="Omada LAN settings listing five networks with their VLAN IDs, subnets and portal settings" width="975" height="289">
+  </section>
+
+  <section class="block">
+    <h2>Management</h2>
+    <ul>
+      <li>One place to monitor device status, firmware versions and uptime.</li>
+      <li>Remote troubleshooting and configuration through the cloud, with no need to be on site.</li>
+    </ul>
+  </section>
+
+  <a class="back" href="index.html">← All projects</a>
+</main>
+<footer id="footer"></footer>
+
+<script src="page.js"></script>
+<script src="lightbox.js"></script>
+</body>
+</html>

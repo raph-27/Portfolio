@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Virtualization Using Proxmox VE — Raphael De Luis</title>
-<meta name="description" content="A home lab built on Proxmox VE for running and testing enterprise-style infrastructure.">
+<meta name="description" content="A home lab on Proxmox VE with Windows Server and a Windows client, running Active Directory Domain Services.">
+<meta name="color-scheme" content="light dark">
+<script src="../js/theme.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -26,33 +28,46 @@
   <header class="page">
     <div class="crumb"><a href="index.html">projects</a> / proxmox</div>
     <h1>Virtualization Using Proxmox VE</h1>
-    <p>A home lab built on Proxmox VE for running and testing enterprise-style infrastructure.</p>
-    <div class="tags"><span class="tag">Proxmox VE</span><span class="tag">Virtualization</span><span class="tag">Home Lab</span><span class="tag">NAS</span></div>
+    <p>A home lab built on an old PC running Proxmox VE, simulating an enterprise environment with Active Directory.</p>
+    <div class="tags"><span class="tag">Proxmox VE</span><span class="tag">Virtualization</span><span class="tag">Home Lab</span><span class="tag">Active Directory</span><span class="tag">Windows Server</span><span class="tag">DNS</span><span class="tag">Group Policy</span></div>
   </header>
 
   <section class="block">
-    <h2>What I built</h2>
-    <ul>
-      <li>A Proxmox VE host running virtual machines for lab and testing work.</li>
-      <li>Storage backed by a NAS, with backups and recovery in mind.</li>
-      <li>Cloud-integrated enterprise simulations on top of the lab.</li>
-    </ul>
+    <h2>Overview</h2>
+    <p>I've been diving deeper into virtualization by setting up my own home lab, using my old PC as a hypervisor server running Proxmox. With just two VMs, one running Microsoft Windows Server and the other a Windows client, I've been able to simulate an enterprise environment.</p>
+    <p>Proxmox is a type 1 hypervisor, and it also has built-in tools to manage virtual computers, take backups, and set up special storage and networking configurations. It's often used in data centers and IT labs. Proxmox VE (Virtual Environment) is a powerful open-source platform for virtualization that lets you run multiple virtual machines (VMs) and containers on a single physical server.</p>
+
+
   </section>
 
   <section class="block">
-    <h2>What I learned</h2>
-    <ul>
-      <li>Placeholder: add the key takeaways, such as networking between VMs, snapshots and backup strategy.</li>
-    </ul>
+    <h2>The hardware</h2>
+    <p>This is my refurbished PC, which I got through buy-and-sell.</p>
+
+    <img class="shot" src="images/proxmox/proxhardware.jpg" alt="The refurbished PC used as the Proxmox host" loading="lazy">
   </section>
 
-  <div class="pager">
-    <a class="next" href="containers.html"><small>Next →</small>Basic Containerization</a>
-  </div>
+  <section class="block">
+    <h2>The web GUI</h2>
+    <p>This is where you manage all the resources of your environment, including physical nodes, virtual machines, containers, storage devices and network configuration. The Proxmox web GUI is a comprehensive, intuitive platform to monitor system performance, allocate hardware resources, configure high availability and clustering, and manage user permissions and backups.</p>
+
+    <img class="shot" src="images/proxmox/proxgui.jpg" alt="The Proxmox web GUI" loading="lazy">
+  </section>
+
+  <section class="block">
+    <h2>AD DS with Windows Server and a client</h2>
+    <p>I implemented a basic Active Directory Domain Services (AD DS) configuration between two virtual machines in my Proxmox environment to simulate a typical enterprise setup. One VM is the domain controller, running Windows Server, where I installed and configured AD DS, DNS and Group Policy Management. I created a new forest and domain, set up organizational units (OUs), and added user and computer accounts to reflect a structured company hierarchy.</p>
+    <p>The second VM, acting as a client machine, was joined to the domain to verify connectivity and domain functionality. I successfully tested domain login from the client VM, applied group policies to manage user settings, and ensured name resolution through the DNS role on the domain controller.</p>
+    <p>This setup allows centralized management, authentication and policy enforcement, laying the foundation for more advanced services like RADIUS, file sharing and role-based access control in future configurations.</p>
+
+    <img class="shot" src="images/proxmox/proxserverclient.jpg" alt="The Windows Server and Windows client virtual machines in Proxmox" loading="lazy">
+  </section>
+
   <a class="back" href="index.html">← All projects</a>
 </main>
 <footer id="footer"></footer>
 
 <script src="page.js"></script>
+<script src="lightbox.js"></script>
 </body>
 </html>
