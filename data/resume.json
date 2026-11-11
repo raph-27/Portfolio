@@ -1,0 +1,311 @@
+{
+  "name": "Raphael De Luis",
+  "role": "IT Infrastructure & Network Engineer",
+  "tagline": "Enterprise networking, Systems Administration, Cybersecurity, Virtualization and Cloud.",
+  "location": "Philippines",
+  "email": "",
+  "phone": "",
+  "linkedin": "https://www.linkedin.com/in/raphael-de-luis-b53a0320b/",
+  "links": [],
+  "resumePdf": "Raphael De Luis-Resume.pdf",
+  "about": [
+    "IT Infrastructure and Network Engineer with experience in enterprise networking, systems administration, cybersecurity, virtualization, and cloud technologies.",
+    "I started as an IT support intern, grew into a Jr. Solutions Architect role, and have supported 200+ clients while designing and deploying scalable IT and network solutions. I also run a home lab with Proxmox, NAS, and cloud-integrated enterprise simulations."
+  ],
+  "stats": [
+    {
+      "value": "150+",
+      "label": "Clients supported"
+    },
+    {
+      "value": "7",
+      "label": "Certifications"
+    },
+    {
+      "value": "2023",
+      "label": "In IT since"
+    }
+  ],
+  "skills": {
+    "items": [
+      {
+        "cat": "Networking",
+        "name": "Cisco",
+        "icon": "cisco",
+        "emoji": "🌐"
+      },
+      {
+        "cat": "Networking",
+        "name": "Fortinet",
+        "icon": "fortinet",
+        "emoji": "🛡️"
+      },
+      {
+        "cat": "Networking",
+        "name": "UniFi",
+        "icon": "ubiquiti",
+        "emoji": "📡"
+      },
+      {
+        "cat": "Networking",
+        "name": "TP-Link Omada",
+        "icon": "tplink",
+        "emoji": "📶"
+      },
+      {
+        "cat": "Networking",
+        "name": "Ruijie",
+        "emoji": "🌐"
+      },
+      {
+        "cat": "Networking",
+        "name": "Routing & Switching",
+        "emoji": "🔀"
+      },
+      {
+        "cat": "Networking",
+        "name": "VLANs",
+        "emoji": "🧩"
+      },
+      {
+        "cat": "Networking",
+        "name": "DNS / DHCP",
+        "emoji": "🧭"
+      },
+      {
+        "cat": "Networking",
+        "name": "IPsec & Site-to-Site VPN",
+        "emoji": "🔒"
+      },
+      {
+        "cat": "Networking",
+        "name": "LAN / WAN / WLAN",
+        "emoji": "📶"
+      },
+      {
+        "cat": "Systems",
+        "name": "Windows Server",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/windows8/windows8-original.svg",
+        "emoji": "🪟"
+      },
+      {
+        "cat": "Systems",
+        "name": "Linux",
+        "icon": "linux",
+        "emoji": "🐧"
+      },
+      {
+        "cat": "Systems",
+        "name": "Active Directory",
+        "emoji": "🗂️"
+      },
+      {
+        "cat": "Systems",
+        "name": "Group Policy",
+        "emoji": "📋"
+      },
+      {
+        "cat": "Systems",
+        "name": "Microsoft 365",
+        "emoji": "📧"
+      },
+      {
+        "cat": "Systems",
+        "name": "Exchange Online",
+        "emoji": "✉️"
+      },
+      {
+        "cat": "Cloud & Virtualization",
+        "name": "AWS",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+        "emoji": "☁️"
+      },
+      {
+        "cat": "Cloud & Virtualization",
+        "name": "Terraform",
+        "icon": "terraform",
+        "emoji": "🏗️"
+      },
+      {
+        "cat": "Cloud & Virtualization",
+        "name": "Proxmox VE",
+        "icon": "proxmox",
+        "emoji": "🖥️"
+      },
+      {
+        "cat": "Cloud & Virtualization",
+        "name": "Hyper-V",
+        "emoji": "💻"
+      },
+      {
+        "cat": "Cloud & Virtualization",
+        "name": "Containerization",
+        "icon": "docker",
+        "emoji": "🐳"
+      },
+      {
+        "cat": "Cloud & Virtualization",
+        "name": "Hybrid Cloud",
+        "emoji": "🌥️"
+      },
+      {
+        "cat": "Backup & DR",
+        "name": "Synology NAS",
+        "icon": "synology",
+        "emoji": "🗄️"
+      },
+      {
+        "cat": "Backup & DR",
+        "name": "RAID",
+        "emoji": "💽"
+      },
+      {
+        "cat": "Backup & DR",
+        "name": "Backup Solutions",
+        "emoji": "💾"
+      },
+      {
+        "cat": "Backup & DR",
+        "name": "Recovery Strategies",
+        "emoji": "🛟"
+      },
+      {
+        "cat": "Security",
+        "name": "Firewall Management",
+        "emoji": "🧱"
+      },
+      {
+        "cat": "Security",
+        "name": "Vulnerability Assessment",
+        "emoji": "🔍"
+      },
+      {
+        "cat": "Security",
+        "name": "Wazuh",
+        "icon": "Pictures/wazuh.png",
+        "emoji": "🛰️"
+      },
+      {
+        "cat": "Operations",
+        "name": "L1 / L2 / L3 Support",
+        "emoji": "🎧"
+      },
+      {
+        "cat": "Operations",
+        "name": "Root Cause Analysis",
+        "emoji": "🧠"
+      },
+      {
+        "cat": "Operations",
+        "name": "SLA Ticket Management",
+        "emoji": "🎫"
+      },
+      {
+        "cat": "Operations",
+        "name": "Network Documentation",
+        "emoji": "📝"
+      },
+      {
+        "cat": "Operations",
+        "name": "Infrastructure Diagrams",
+        "emoji": "🗺️"
+      },
+      {
+        "cat": "Operations",
+        "name": "Deployment Plans",
+        "emoji": "📌"
+      },
+      {
+        "cat": "Operations",
+        "name": "Technical Reports",
+        "emoji": "📄"
+      }
+    ]
+  },
+  "experience": [
+    {
+      "title": "IT Infrastructure | Network Engineer",
+      "company": "Herma Corporation",
+      "when": "Aug 2025 — Present",
+      "points": [
+        "Resolve escalated L1/L2/L3 IT support tickets within SLA targets.",
+        "Configure and maintain Fortinet FortiGate, Cisco, and UniFi devices, including firewall policy, DNS, DHCP, VLANs, and VPNs.",
+        "Administer Windows Server, Active Directory, Group Policy, DNS, DHCP, Microsoft 365, Exchange Online, and Defender.",
+        "Manage site-to-site and remote access VPNs, firewall policies, NAT rules, and network security.",
+        "Design cost-effective infrastructure solutions and provide on-site technical support."
+      ]
+    },
+    {
+      "title": "Jr. Solutions Architect",
+      "company": "Trailblazers Solutions Inc.",
+      "when": "July 2024 — Jul 2025",
+      "points": [
+        "Designed and implemented scalable IT, network, IP PBX, and CCTV solutions.",
+        "Assisted with system integrations, technical documentation, and product demonstrations.",
+        "Provided pre-sales and post-sales support through consultations and remote sessions.",
+        "Maintained systems and networks with ongoing technical support."
+      ]
+    },
+    {
+      "title": "IT Support Staff (Part-Time)",
+      "company": "Trailblazers Solutions Inc.",
+      "when": "Feb 2024 — Jul 2024",
+      "points": [
+        "Provided Level 1/2 support, monitoring network performance and resolving hardware, software, and connectivity issues within SLA targets.",
+        "Delivered remote support using AnyDesk and TeamViewer.",
+        "Managed backup monitoring and disaster recovery processes."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "title": "B.S. in Information Technology",
+      "sub": "Quezon City University · Quezon City University Scholarship recipient",
+      "when": "2020 — 2024"
+    }
+  ],
+  "certs": [
+    {
+      "title": "Cisco Certified Network Associate (CCNA)",
+      "sub": "Cisco · Valid through Nov 6, 2029",
+      "when": "Nov 2026",
+      "img": "Pictures/ccna_cert-1.jpg"
+    },
+    {
+      "title": "AWS Certified Cloud Practitioner",
+      "sub": "Amazon Web Services",
+      "when": "Certification",
+      "img": "Pictures/AWS.png"
+    },
+    {
+      "title": "Fortinet Cybersecurity Associate",
+      "sub": "Fortinet · Valid through Jan 13, 2027",
+      "when": "Jan 2025",
+      "img": "Pictures/Fortinet.png"
+    },
+    {
+      "title": "Six Sigma White Belt",
+      "sub": "Council for Six Sigma Certification",
+      "when": "Certification",
+      "img": "Pictures/White Belt.png"
+    },
+    {
+      "title": "TP-Link Omada Certified Network Administrator (OCNA) – Wireless",
+      "sub": "TP-Link · Valid through Oct 25, 2027",
+      "when": "Certification",
+      "img": "Pictures/TP-Link 2.png"
+    },
+    {
+      "title": "TP-Link Network Associate – Enterprise Routing and Switching",
+      "sub": "TP-Link · Valid through Sep 27, 2027",
+      "when": "Certification",
+      "img": "Pictures/TP-Link.png"
+    },
+    {
+      "title": "Ruijie Certified Network Associate",
+      "sub": "Ruijie",
+      "when": "Certification",
+      "img": "Pictures/Ruijie.png"
+    }
+  ]
+}
